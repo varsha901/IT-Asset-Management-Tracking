@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AssetTrack - Maintenance</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="hero compact">
+      <div>
+        <p class="eyebrow">IT Asset Management System</p>
+        <h1>Maintenance</h1>
+        <p>Log service requests and keep the ticket queue visible.</p>
+      </div>
+      <nav>
+        <a href="/">Dashboard</a>
+        <a href="/assets.html">Assets</a>
+        <a href="/maintenance.html">Maintenance</a>
+        <a href="/licenses.html">Licenses</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="card">
+        <h2>Submit a Maintenance Request</h2>
+        <form id="maintenanceForm" class="maintenance-form">
+          <div class="field-group">
+            <label for="maintenanceTitle">Title</label>
+            <input id="maintenanceTitle" name="title" required />
+          </div>
+          <div class="field-group">
+            <label for="maintenanceAsset">Asset</label>
+            <select id="maintenanceAsset" name="asset" required></select>
+          </div>
+          <div class="field-group">
+            <label for="maintenancePriority">Priority</label>
+            <select id="maintenancePriority" name="priority">
+              <option value="LOW">Low</option>
+              <option value="MEDIUM" selected>Medium</option>
+              <option value="HIGH">High</option>
+              <option value="CRITICAL">Critical</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="maintenanceStatus">Status</label>
+            <select id="maintenanceStatusSelect" name="status">
+              <option value="OPEN" selected>Open</option>
+              <option value="IN_PROGRESS">In Progress</option>
+              <option value="RESOLVED">Resolved</option>
+              <option value="CLOSED">Closed</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="maintenanceDescription">Description</label>
+            <textarea id="maintenanceDescription" name="description" required></textarea>
+          </div>
+          <button type="submit">Create Request</button>
+        </form>
+        <div id="maintenanceStatus" class="status-banner">Loading maintenance requests…</div>
+        <ul id="maintenanceList" class="data-list"></ul>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

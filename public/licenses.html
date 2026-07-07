@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AssetTrack - Licenses</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="hero compact">
+      <div>
+        <p class="eyebrow">IT Asset Management System</p>
+        <h1>Licenses</h1>
+        <p>Track purchased software entitlements and upcoming renewals.</p>
+      </div>
+      <nav>
+        <a href="/">Dashboard</a>
+        <a href="/assets.html">Assets</a>
+        <a href="/maintenance.html">Maintenance</a>
+        <a href="/licenses.html">Licenses</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="card">
+        <h2>Software License Inventory</h2>
+        <form id="licenseForm" class="maintenance-form">
+          <div class="field-group">
+            <label for="licenseName">Name</label>
+            <input id="licenseName" name="name" required />
+          </div>
+          <div class="field-group">
+            <label for="licenseVendor">Vendor</label>
+            <input id="licenseVendor" name="vendor" />
+          </div>
+          <div class="field-group">
+            <label for="licenseSeats">Seats</label>
+            <input id="licenseSeats" name="seats" type="number" min="1" value="1" />
+          </div>
+          <div class="field-group">
+            <label for="licenseUsedSeats">Used Seats</label>
+            <input id="licenseUsedSeats" name="usedSeats" type="number" min="0" value="0" />
+          </div>
+          <div class="field-group">
+            <label for="licenseStatus">Status</label>
+            <select id="licenseStatus" name="status">
+              <option value="ACTIVE">Active</option>
+              <option value="EXPIRED">Expired</option>
+              <option value="SUSPENDED">Suspended</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="licenseExpiry">Expiry Date</label>
+            <input id="licenseExpiry" name="expiryDate" type="date" />
+          </div>
+          <div class="field-group">
+            <label for="licenseNotes">Notes</label>
+            <textarea id="licenseNotes" name="notes"></textarea>
+          </div>
+          <button type="submit">Add License</button>
+        </form>
+        <div id="licenseStatus" class="status-banner">Loading licenses…</div>
+        <ul id="licenseList" class="data-list"></ul>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

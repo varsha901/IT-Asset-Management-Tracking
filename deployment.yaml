@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: assettrack
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: assettrack
+  template:
+    metadata:
+      labels:
+        app: assettrack
+    spec:
+      containers:
+        - name: assettrack
+          image: assettrack:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PORT
+              value: "8080"
+            - name: MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: assettrack-secrets
+                  key: mongodb-uri

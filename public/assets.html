@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AssetTrack - Assets</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="hero compact">
+      <div>
+        <p class="eyebrow">IT Asset Management System</p>
+        <h1>Assets</h1>
+        <p>Manage laptops, desktops, monitors, and peripherals in one place.</p>
+      </div>
+      <nav>
+        <a href="/">Dashboard</a>
+        <a href="/assets.html">Assets</a>
+        <a href="/maintenance.html">Maintenance</a>
+        <a href="/licenses.html">Licenses</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="card">
+        <h2>Asset Registry</h2>
+        <p>Review the current inventory and track asset status at a glance.</p>
+        <form id="assetForm" class="asset-form">
+          <div class="field-group">
+            <label for="assetTag">Asset Tag</label>
+            <input id="assetTag" name="assetTag" required />
+          </div>
+          <div class="field-group">
+            <label for="assetName">Asset Name</label>
+            <input id="assetName" name="name" required />
+          </div>
+          <div class="field-group">
+            <label for="assetType">Type</label>
+            <select id="assetType" name="type" required>
+              <option value="LAPTOP">Laptop</option>
+              <option value="DESKTOP">Desktop</option>
+              <option value="MONITOR">Monitor</option>
+              <option value="SERVER">Server</option>
+              <option value="PERIPHERAL">Peripheral</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="assetCategory">Category</label>
+            <input id="assetCategory" name="category" required />
+          </div>
+          <div class="field-group">
+            <label for="assetDepartment">Department</label>
+            <input id="assetDepartment" name="department" />
+          </div>
+          <button type="submit">Add Asset</button>
+        </form>
+        <div id="assetStatus" class="status-banner">Loading assets…</div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Tag</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Status</th>
+              <th>Department</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="assetRows"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AssetTrack Dashboard</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <p class="eyebrow">IT Asset Management System</p>
+        <h1>AssetTrack</h1>
+        <p>Track assets, assignments, maintenance, and software licenses from one place.</p>
+      </div>
+      <nav>
+        <a href="/">Dashboard</a>
+        <a href="/assets.html">Assets</a>
+        <a href="/maintenance.html">Maintenance</a>
+        <a href="/licenses.html">Licenses</a>
+      </nav>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <h2>Assets Overview</h2>
+        <div class="stats">
+          <div><span id="totalAssets">0</span><small>Total Assets</small></div>
+          <div><span id="assignedAssets">0</span><small>Assigned</small></div>
+          <div><span id="maintenanceAssets">0</span><small>Maintenance</small></div>
+        </div>
+      </section>
+      <section class="card">
+        <h2>Upcoming Alerts</h2>
+        <ul>
+          <li>Warranty review dashboard enabled</li>
+          <li>License expiry insights ready</li>
+          <li>Maintenance queue monitoring enabled</li>
+        </ul>
+      </section>
+      <section class="card">
+        <h2>Reports</h2>
+        <ul>
+          <li>Assets by department</li>
+          <li>Expiring warranties</li>
+          <li>License expiry</li>
+        </ul>
+      </section>
+      <section class="card highlight">
+        <h2>Expiring Licenses</h2>
+        <div class="stats">
+          <div><span id="expiringLicenses">0</span><small>Near expiry</small></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
