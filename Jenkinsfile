@@ -39,8 +39,6 @@ pipeline {
           string(credentialsId: 'azure-client-secret', variable: 'ARM_CLIENT_SECRET'),
           string(credentialsId: 'azure-tenant-id', variable: 'ARM_TENANT_ID'),
           string(credentialsId: 'azure-subscription-id', variable: 'ARM_SUBSCRIPTION_ID')
-          string(credentialsId: 'MONGODB_URI', variable: 'MONGODB_URI'),
-          string(credentialsId: 'JWT_SECRET', variable: 'JWT_SECRET')
         ]) {
           dir('infra/terraform') {
             sh '''
@@ -82,13 +80,12 @@ pipeline {
       }
       steps {
         withCredentials([
-          usernamePassword(
-            credentialsId: 'azure-service-principal',
-            usernameVariable: 'AZURE_CLIENT_ID',
-            passwordVariable: 'AZURE_CLIENT_SECRET'
-          ),
+          string(credentialsId: 'azure-client-id', variable: 'AZURE_CLIENT_ID'),
+          string(credentialsId: 'azure-client-secret', variable: 'AZURE_CLIENT_SECRET'),
           string(credentialsId: 'azure-tenant-id', variable: 'AZURE_TENANT_ID'),
-          string(credentialsId: 'azure-subscription-id', variable: 'AZURE_SUBSCRIPTION_ID')
+          string(credentialsId: 'azure-subscription-id', variable: 'AZURE_SUBSCRIPTION_ID'),
+          string(credentialsId: 'MONGODB_URI', variable: 'MONGODB_URI'),
+          string(credentialsId: 'JWT_SECRET', variable: 'JWT_SECRET')
         ]) {
           sh '''
             az login --service-principal \
