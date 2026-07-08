@@ -107,6 +107,11 @@ pipeline {
               NODE_ENV="production" \
               SCM_DO_BUILD_DURING_DEPLOYMENT="true"
 
+             az webapp config set \
+               --resource-group "$RESOURCE_GROUP" \
+               --name "$APP_NAME" \
+               --startup-file "npm start"
+  
             az webapp deploy \
               --resource-group "$RESOURCE_GROUP" \
               --name "$APP_NAME" \
