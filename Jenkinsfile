@@ -1,6 +1,10 @@
 pipeline {
   agent any
-
+  
+tools {
+        nodejs 'NodeJS-20'
+    }
+  
   environment {
     APP_NAME = 'assettrack-app'
     RESOURCE_GROUP = 'assettrack-rg'
