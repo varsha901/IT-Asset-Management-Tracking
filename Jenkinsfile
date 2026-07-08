@@ -50,10 +50,7 @@ pipeline {
               terraform plan \
                 -var="resource_group_name=$RESOURCE_GROUP" \
                 -var="app_service_plan_name=$APP_SERVICE_PLAN" \
-                -var="app_name=$APP_NAME" \
-                -out=tfplan
-
-              terraform apply -auto-approve tfplan
+                -var="app_name=$APP_NAME"
             '''
           }
         }
