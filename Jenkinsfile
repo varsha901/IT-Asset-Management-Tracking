@@ -58,15 +58,21 @@ pipeline {
     }
 
     stage('Package') {
-      steps {
-        sh '''
-          rm -rf artifacts
-          mkdir artifacts
-          zip -r artifacts/assettrack.zip . \
-            -x ".git/*" "node_modules/*" "artifacts/*"
-        '''
-      }
-    }
+  steps {
+    sh '''
+      rm -rf artifacts package
+      mkdir -p artifacts package
+
+      cp package.json package/
+      cp package-lock.json package/
+      cp -r src package/
+      cp -r public package/
+
+      cd package
+      zip -r ../artifacts/assettrack.zip .
+    '''
+  }
+}
 
     stage('Publish artifacts') {
       steps {
