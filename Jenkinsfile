@@ -2,9 +2,13 @@ pipeline {
   agent any
 
   tools {
-    nodejs 'NodeJS-20'
-  }
-
+  nodejs 'NodeJS-20'
+}
+  
+  options {
+  skipDefaultCheckout(true)
+}
+  
   environment {
     APP_NAME = 'mywebapp9632'
     RESOURCE_GROUP = 'assettrack-rg'
@@ -14,6 +18,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
+        cleanWs()
         checkout scm
       }
     }
@@ -106,12 +111,13 @@ pipeline {
               MONGODB_URI="$MONGODB_URI" \
               JWT_SECRET="$JWT_SECRET" \
               NODE_ENV="production" \
-              SCM_DO_BUILD_DURING_DEPLOYMENT="false"
+              SCM_DO_BUILD_DURING_DEPLOYMENT="false" \
+              ENABLE_ORYX_BUILD="false"
 
              az webapp config set \
                --resource-group "$RESOURCE_GROUP" \
                --name "$APP_NAME" \
-               --startup-file "npm start"
+               --startup-file "node src/server.js"
   
             az webapp deployment source config-zip \
              --resource-group "$RESOURCE_GROUP" \
