@@ -69,6 +69,7 @@ pipeline {
       cp -r public package/
 
       cd package
+      npm ci --omit=dev
       zip -r ../artifacts/assettrack.zip .
     '''
   }
@@ -105,18 +106,17 @@ pipeline {
               MONGODB_URI="$MONGODB_URI" \
               JWT_SECRET="$JWT_SECRET" \
               NODE_ENV="production" \
-              SCM_DO_BUILD_DURING_DEPLOYMENT="true"
+              SCM_DO_BUILD_DURING_DEPLOYMENT="false"
 
              az webapp config set \
                --resource-group "$RESOURCE_GROUP" \
                --name "$APP_NAME" \
                --startup-file "npm start"
   
-            az webapp deploy \
-              --resource-group "$RESOURCE_GROUP" \
-              --name "$APP_NAME" \
-              --src-path artifacts/assettrack.zip \
-              --type zip
+            az webapp deployment source config-zip \
+             --resource-group "$RESOURCE_GROUP" \
+             --name "$APP_NAME" \
+             --src artifacts/assettrack.zip
 
             curl -f https://$APP_NAME.azurewebsites.net/api/health
           '''
