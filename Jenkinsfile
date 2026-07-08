@@ -8,7 +8,7 @@ tools {
   environment {
     APP_NAME = 'assettrack-app'
     RESOURCE_GROUP = 'assettrack-rg'
-    AZURE_LOCATION = 'canadacentral'
+    AZURE_LOCATION = 'Australia East'
   }
 
   stages {
