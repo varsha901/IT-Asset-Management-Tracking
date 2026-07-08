@@ -47,5 +47,5 @@ variable "app_name" {
 
 variable "location" {
   type = string
-  default = "eastus"
+  default = "canadacentral"
 }
