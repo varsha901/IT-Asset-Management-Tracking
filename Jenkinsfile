@@ -6,9 +6,9 @@ pipeline {
   }
 
   environment {
-    APP_NAME = 'assettrack-app'
+    APP_NAME = 'mywebapp9632'
     RESOURCE_GROUP = 'assettrack-rg'
-    APP_SERVICE_PLAN = 'assettrack-app-plan'
+    APP_SERVICE_PLAN = 'myplan'
   }
 
   stages {
