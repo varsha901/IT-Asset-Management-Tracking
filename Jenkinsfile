@@ -74,7 +74,6 @@ pipeline {
       cp -r public package/
 
       cd package
-      npm ci --omit=dev
       zip -r ../artifacts/assettrack.zip .
     '''
   }
@@ -113,19 +112,20 @@ pipeline {
               NODE_ENV="production" \
               PORT="8080" \
               WEBSITES_PORT="8080" \
-              SCM_DO_BUILD_DURING_DEPLOYMENT="false" \
-              ENABLE_ORYX_BUILD="false"
+              SCM_DO_BUILD_DURING_DEPLOYMENT="true" \
+              ENABLE_ORYX_BUILD="true"
 
              az webapp config set \
                --resource-group "$RESOURCE_GROUP" \
                --name "$APP_NAME" \
                --startup-file "npm start"
   
-            az webapp deployment source config-zip \
+            az webapp deploy \
              --resource-group "$RESOURCE_GROUP" \
              --name "$APP_NAME" \
-             --src artifacts/assettrack.zip
-
+             --src-path artifacts/assettrack.zip \
+             --type zip
+             
             curl -f https://$APP_NAME.azurewebsites.net/api/health
           '''
         }
