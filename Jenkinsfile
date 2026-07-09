@@ -111,13 +111,15 @@ pipeline {
               MONGODB_URI="$MONGODB_URI" \
               JWT_SECRET="$JWT_SECRET" \
               NODE_ENV="production" \
+              PORT="8080" \
+              WEBSITES_PORT="8080" \
               SCM_DO_BUILD_DURING_DEPLOYMENT="false" \
               ENABLE_ORYX_BUILD="false"
 
              az webapp config set \
                --resource-group "$RESOURCE_GROUP" \
                --name "$APP_NAME" \
-               --startup-file "node src/server.js"
+               --startup-file "npm start"
   
             az webapp deployment source config-zip \
              --resource-group "$RESOURCE_GROUP" \
