@@ -129,7 +129,15 @@ pipeline {
              
             sleep 60
            
-            curl -f https://$APP_NAME.azurewebsites.net/api/health
+            HOSTNAME=$(az webapp show \
+           --resource-group "$RESOURCE_GROUP" \
+           --name "$APP_NAME" \
+           --query defaultHostName \
+           -o tsv)
+
+           echo "Checking $HOSTNAME"
+
+           curl -f https://$HOSTNAME/api/health
           '''
         }
       }
