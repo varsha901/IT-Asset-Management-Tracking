@@ -124,8 +124,11 @@ pipeline {
              --resource-group "$RESOURCE_GROUP" \
              --name "$APP_NAME" \
              --src-path artifacts/assettrack.zip \
-             --type zip
+             --type zip \
+             --async true
              
+            sleep 60
+           
             curl -f https://$APP_NAME.azurewebsites.net/api/health
           '''
         }
